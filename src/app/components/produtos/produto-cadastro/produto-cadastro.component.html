@@ -1,0 +1,86 @@
+<h1 mat-dialog-title>{{title}}</h1>
+
+<form [formGroup]="frmCadastro" novalidate>
+  <div mat-dialog-content>
+
+    <mat-form-field  appearance="outline" *ngIf="isEditing">
+      <mat-label>Id</mat-label>
+      <input matInput type="text" id="id" formControlName="id" [readonly]="true" >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input matInput placeholder="Nome" type="text" id="nome" formControlName="nome" required>
+      <mat-error *ngIf="frmCadastro.controls['nome'].hasError('required')">Campo obrigatório.</mat-error>
+      <mat-error *ngIf="frmCadastro.controls['nome'].hasError('minlength')">Nome deve conter no mínimo 5 caracteres.</mat-error>
+      <mat-error *ngIf="frmCadastro.controls['nome'].hasError('maxlength')">Nome deve conter no máximo 60 caracteres.</mat-error>
+      <button mat-button matSuffix mat-icon-button (click)="onClick($event, 'nome')"><mat-icon>close</mat-icon></button>
+      <mat-hint align="start">{{frmCadastro?.value?.nome?.length || 0}}/60</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Categoria</mat-label>
+      <mat-select placeholder="Categoria" formControlName="categoria" required>
+        <mat-option>Nenhum item selecionado</mat-option>
+        <mat-option *ngFor="let categoria of categorias" [value]="categoria.descricao">{{categoria.descricao}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="frmCadastro.controls['categoria'].hasError('required')">Campo obrigatório.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Escolha uma data</mat-label>
+      <input matInput [matDatepicker]="picker" id="data" formControlName="data" required>
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="frmCadastro.controls['data'].hasError('required')">Campo obrigatório.</mat-error>
+    </mat-form-field>
+
+    <div class="setRadio">
+      <mat-label class="lblTipo">Tipo: </mat-label>
+      <mat-radio-group aria-label="Tipo do Produto:" id="tipo" formControlName="tipo" required>
+        <mat-radio-button color="primary" *ngFor="let tipo of tipos" [value]="tipo.descricao">{{tipo.descricao}}</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Marcas</mat-label>
+      <mat-select placeholder="Marca" id="marca" formControlName="marca" required>
+        <mat-option>Nenhum item selecionado</mat-option>
+        <mat-option *ngFor="let marca of marcas" [value]="marca.descricao">{{marca.descricao}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="frmCadastro.controls['marca'].hasError('required')">Campo obrigatório.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Preço</mat-label>
+      <input matInput placeholder="Preço" type="text" id="preco" formControlName="preco" required mask="separator.2" thousandSeparator="." decimalMarker="," prefix="R$ "> <!-- mask="separator.2" [thousandSeparator]="'.'" [decimalMarker]="','" prefix="R$ "  -->
+      <mat-error *ngIf="frmCadastro.controls['preco'].hasError('required')">Campo obrigatório.</mat-error>
+      <mat-hint align="start">Digite (,) e as casas decimais</mat-hint>
+      <button mat-button matSuffix mat-icon-button (click)="onClick($event, 'preco')"><mat-icon>close</mat-icon></button>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Descrição</mat-label>
+      <textarea matInput placeholder="Descrição" type="text" id="descricao" formControlName="descricao" required></textarea>
+      <mat-error *ngIf="frmCadastro.controls['descricao'].hasError('required')">Campo obrigatório.</mat-error>
+      <mat-error *ngIf="frmCadastro.controls['descricao'].hasError('minlength')">Descrição deve conter no mínimo 5 caracteres.</mat-error>
+      <mat-error *ngIf="frmCadastro.controls['descricao'].hasError('maxlength')">Descriçao deve conter no máximo 60 caracteres.</mat-error>
+      <button mat-button matSuffix mat-icon-button (click)="onClick($event, 'descricao')"><mat-icon>close</mat-icon></button>
+      <mat-hint align="start">{{frmCadastro?.value?.descricao?.length || 0}}/60</mat-hint>
+    </mat-form-field>
+
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" mat-dialog-close (click)="this.frmCadastro.reset()"><span class="material-icons">arrow_circle_left</span>Cancelar</button>
+    <button mat-raised-button color="primary" *ngIf="!isEditing" [disabled]="!this.frmCadastro.valid" (click)="create()"><span class="material-icons">save</span>Salvar</button>
+    <button mat-raised-button color="primary" *ngIf="isEditing" (click)="update()"><span class="material-icons">edit</span>Alterar</button>
+  </div>
+</form>
+
+<!--
+
+      <button mat-raised-button color="primary" (click)="create()" *ngIf="!isEditing" [disabled]="!this.frmCadastro.valid" matTooltip="Salvar registro"><span class="material-icons">save</span> Salvar</button>
+      <button mat-raised-button color="primary" (click)="update()" *ngIf="isEditing"><span class="material-icons" matTooltip="Apagar registro">edit</span> Alterar</button>
+
+ -->

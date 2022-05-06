@@ -1,0 +1,80 @@
+ .top {
+  margin: 20px 20px 0 20px;
+ }
+
+ .bottom {
+  margin: 0 20px 0 20px;
+ }
+
+ .container {
+   margin: 0 20px 0 20px;
+   max-height: 50%;
+   overflow-x: auto;
+   overflow-y: auto;
+ }
+
+mat-form-field {
+  width: 100%;
+}
+
+.centre {
+  text-align: center
+}
+
+.mat-table {
+  max-height: 65vh !important;
+  // overflow-x: scroll !important;
+}
+
+.mat-row, .mat-header-row {
+  min-width: 1200px;
+  width: 100%;
+}
+
+.mat-row:hover {
+  cursor: pointer;
+  background-color: rgba(65, 125, 255, 0.2);;
+  // background-color: whitesmoke;
+}
+
+.mat-column-actions {
+  max-width: 6%;
+}
+
+.mat-column-id {
+  max-width: 3%;
+}
+
+.mat-column-nome {
+  max-width: 30%;
+}
+
+.mat-column-descricao {
+  max-width: 25%;
+}
+
+.mat-column-tipo {
+  max-width: 8%;
+  font-weight: bold;
+  color: #3f51b5;
+}
+
+.mat-column-marca {
+  max-width: 6%;
+}
+
+.mat-column-categoria {
+  max-width: 6%;
+}
+
+.mat-column-preco {
+  max-width: 6%;
+  font-weight: bold;
+  color: green;
+  justify-content: right;
+  padding-right: 20px;
+}
+
+.mat-column-data {
+  max-width: 6%;
+}

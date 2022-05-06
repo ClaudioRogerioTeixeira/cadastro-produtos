@@ -1,0 +1,25 @@
+.main {
+  background-image: url("../../../../assets/delete.png");
+}
+
+.container {
+  display: flex;
+  justify-content: start;
+  padding: 10px 0 0 20px;
+  background-color: red !important;
+}
+
+.content {
+  color: white !important;
+}
+
+.mat-body-1 {
+  font-weight: bold !important;
+}
+
+.actions {
+  display: flex;
+  justify-content: end;
+  margin-top: 90px;
+  margin-right: 15px;
+}
