@@ -7,8 +7,17 @@ Cadastro de Produtos (Angular 12, API NODE/Json-Server)
 - ng s -o
 
 ## Backend:
-- baixar API repositório: https://github.com/ClaudioRogerioTeixeira/produtos-api
+Local:
+- Repositório: https://github.com/ClaudioRogerioTeixeira/produtos-api
 - node server.js
+
+Remoto: (Heroku)
+- Repositório: https://github.com/ClaudioRogerioTeixeira/produtos-api
+- heroku git:remote -a seu-app
+- heroku login
+- git add .
+- git commit -am "sua descrição"
+- git push heroku main
 
 ## Tecnologias
 - Angular

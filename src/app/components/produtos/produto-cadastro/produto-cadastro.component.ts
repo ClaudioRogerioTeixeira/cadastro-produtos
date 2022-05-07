@@ -149,6 +149,7 @@ export class ProdutoCadastroComponent implements OnInit {
 
   create(): void {
     const { valid, value } = this.frmCadastro;
+    debugger
     if (valid) {
       this.produtosService.create(value).subscribe(
         response => {
@@ -165,6 +166,7 @@ export class ProdutoCadastroComponent implements OnInit {
 
   update(): void {
     const { valid, value } = this.frmCadastro;
+    // const valor = parseInt(value.preco.toString().substring(3));
     if (valid) {
       this.produtosService.update(value).subscribe(
         response => {

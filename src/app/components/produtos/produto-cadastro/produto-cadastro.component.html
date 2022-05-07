@@ -54,7 +54,8 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Preço</mat-label>
-      <input matInput placeholder="Preço" type="text" id="preco" formControlName="preco" required mask="separator.2" thousandSeparator="." decimalMarker="," prefix="R$ "> <!-- mask="separator.2" [thousandSeparator]="'.'" [decimalMarker]="','" prefix="R$ "  -->
+      <input matInput placeholder="Preço" type="text" id="preco" formControlName="preco" required mask="separator.2" thousandSeparator="." [decimalMarker]="','">
+      <!--  prefix="R$ " mask="separator.2" [thousandSeparator]="'.'" [decimalMarker]="','" prefix="R$ "  -->
       <mat-error *ngIf="frmCadastro.controls['preco'].hasError('required')">Campo obrigatório.</mat-error>
       <mat-hint align="start">Digite (,) e as casas decimais</mat-hint>
       <button mat-button matSuffix mat-icon-button (click)="onClick($event, 'preco')"><mat-icon>close</mat-icon></button>

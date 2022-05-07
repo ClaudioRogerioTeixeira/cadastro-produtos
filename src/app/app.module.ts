@@ -44,7 +44,7 @@ registerLocaleData(localePt, 'pt');
     ReactiveFormsModule,
     FormsModule,
     NgxMaskModule.forRoot({
-      dropSpecialCharacters: false // ao salvar, manterá a mascara
+      dropSpecialCharacters: true // ao salvar, manterá a mascara
     }),
     TranslateModule.forRoot(),
   ],
