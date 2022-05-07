@@ -7,13 +7,7 @@ Cadastro de Produtos (Angular 12, API NODE/Json-Server)
 - ng s -o
 
 ## Backend:
-
-LOCAL
-- baixar repositório: https://github.com/ClaudioRogerioTeixeira/produtos-api
-- npm start
-
-Remoto
-- baixar repositório: https://github.com/ClaudioRogerioTeixeira/produtos-api
+- baixar API repositório: https://github.com/ClaudioRogerioTeixeira/produtos-api
 - node server.js
 
 ## Tecnologias
