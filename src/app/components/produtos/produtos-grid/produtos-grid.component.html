@@ -1,5 +1,5 @@
 
-<div class="top">
+<div flaxLayout="column" class="top">
   <mat-card>
     <mat-card-title>Lista de Produtos</mat-card-title>
   </mat-card>
@@ -11,7 +11,7 @@
   </mat-form-field>
 </div>
 
-<div class="container">
+<div class="container" flaxLayout="column">
   <mat-table [dataSource]="dataSource" matSort matSortActive="name" matSortStart="asc">
 
     <!-- actions -->
@@ -102,7 +102,7 @@
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>
 </div>
-<div class="bottom">
+<div flaxLayout="column" class="bottom">
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"  [showFirstLastButtons]="true" aria-label="Selecione a página" fixed></mat-paginator>
 </div>
 

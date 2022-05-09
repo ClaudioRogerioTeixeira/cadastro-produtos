@@ -94,7 +94,7 @@ export class ProdutoCadastroComponent implements OnInit {
         this.matSnackBar.open(`Erro: ${err.status} - ${err.statusText} `, '',{duration: 3000, panelClass:'danger-snackbar'});
       },
       () => {
-        this.matSnackBar.open(`${this.categorias.length} Categorias carregadas com sucesso`, '',{duration: 3000, panelClass:'success-snackbar'});
+        this.matSnackBar.open(`${this.categorias.length} Categorias carregados com sucesso`, '',{duration: 3000, panelClass:'success-snackbar'});
       }
     );
   }
@@ -106,7 +106,7 @@ export class ProdutoCadastroComponent implements OnInit {
         this.matSnackBar.open(`Erro: ${err.status} - ${err.statusText} `, '',{duration: 3000, panelClass:'danger-snackbar'});
       },
       () => {
-        this.matSnackBar.open(`${this.marcas.length} Marcas carregadas com sucesso`, '',{duration: 3000, panelClass:'success-snackbar'});
+        this.matSnackBar.open(`${this.marcas.length} Marcas carregados com sucesso`, '',{duration: 3000, panelClass:'success-snackbar'});
       }
     );
   }

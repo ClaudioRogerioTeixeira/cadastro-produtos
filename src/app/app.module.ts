@@ -23,6 +23,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatPaginatorI18nService } from './shared/mat-paginator-i18n.service';
 import { TranslateModule } from "@ngx-translate/core";
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 registerLocaleData(localePt, 'pt');
 
@@ -40,6 +41,7 @@ registerLocaleData(localePt, 'pt');
     BrowserAnimationsModule,
     CoreModule,
     MaterialModule,
+    FlexLayoutModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,

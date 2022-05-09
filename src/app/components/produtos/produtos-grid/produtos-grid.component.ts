@@ -3,7 +3,7 @@ import {AfterViewInit, Component, ViewChild, OnInit} from '@angular/core';
 import { ProdutosService } from './../produtos.service';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort, MatSortable} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -38,10 +38,16 @@ export class ProdutosGridComponent implements OnInit {
   }
 
   openDialog() {
-    const dialogRef =this.dialog.open(ProdutoCadastroComponent, {
-      width: '30%',
-      // panelClass: "dialogClass",
-    });
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '60%';
+    dialogConfig.height = 'auto';
+    dialogConfig.hasBackdrop = true;
+    dialogConfig.direction= 'ltr';
+    dialogConfig.panelClass = 'dialogClass'
+
+    const dialogRef =this.dialog.open(ProdutoCadastroComponent, dialogConfig);
     dialogRef.afterClosed().subscribe( (result) => {
       this.getAll();
     })
@@ -61,7 +67,7 @@ export class ProdutosGridComponent implements OnInit {
         this.matSnackBar.open(`Erro: ${err.status} - ${err.statusText} `, '',{duration: 3000, panelClass:'danger-snackbar'});
       },
       () => {
-        this.matSnackBar.open(`${this.produtos.length} Produtos carregadas com sucesso`, '',{duration: 3000, panelClass:'success-snackbar'});
+        this.matSnackBar.open(`${this.produtos.length} Produtos carregados com sucesso`, '',{duration: 3000, panelClass:'success-snackbar'});
       }
     )
   }
@@ -76,10 +82,20 @@ export class ProdutosGridComponent implements OnInit {
   }
 
   edit(row: IProduto) {
-    const dialogRef = this.dialog.open(ProdutoCadastroComponent, {
-      width: '30%',
-      data: row
-    });
+    // const dialogRef = this.dialog.open(ProdutoCadastroComponent, {
+    //   width: '30%',
+    //   data: row
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = '60%';
+    dialogConfig.height = 'auto';
+    dialogConfig.hasBackdrop = true;
+    dialogConfig.direction= 'ltr';
+    dialogConfig.panelClass = 'dialogClass'
+    dialogConfig.data = row
+
+    const dialogRef =this.dialog.open(ProdutoCadastroComponent, dialogConfig);
     dialogRef.afterClosed().subscribe( (result) => {
       // console.log('result edit: ', result);
       this.getAll();
