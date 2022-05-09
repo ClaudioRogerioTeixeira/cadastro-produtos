@@ -1,5 +1,6 @@
 .main {
   background-image: url("../../../../assets/delete.png");
+  background-size: cover;
 }
 
 .container {
@@ -22,4 +23,11 @@
   justify-content: end;
   margin-top: 90px;
   margin-right: 15px;
+}
+
+@media (max-width: 600px)
+{
+  .main {
+    background-image: none;
+  }
 }

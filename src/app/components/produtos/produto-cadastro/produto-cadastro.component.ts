@@ -70,12 +70,11 @@ export class ProdutoCadastroComponent implements OnInit, AfterViewInit, OnDestro
     this.mediaSub = this.mediaObserver.media$.subscribe(
       // const matDialogConfig = new MatDialogConfig();
       (change: MediaChange) => {
-        console.log(change.mqAlias);
-        console.log(change);
+        // console.log(change.mqAlias);
+        // console.log(change);
 
         if (change.mqAlias === 'sm') {
-          const valor = this.matDialogRef.getState();
-          console.log('valor', valor);
+
         }
       }
     );
