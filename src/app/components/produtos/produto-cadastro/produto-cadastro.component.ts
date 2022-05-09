@@ -1,9 +1,9 @@
 
-import { Component, Input, OnInit, Inject } from '@angular/core';
+import { Component, Input, OnInit, Inject, AfterViewInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 
 import { CategoriasService } from './../../../core/services/categorias.service';
 import { MarcasService } from './../../../core/services/marcas.service';
@@ -13,13 +13,15 @@ import { ICategoria } from 'src/app/core/interfaces/categoria.interface';
 import { IMarca } from 'src/app/core/interfaces/marca.interface';
 import { IProduto, EMPTY_PRODUTO } from '../produto.interface';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-produto-cadastro',
   templateUrl: './produto-cadastro.component.html',
   styleUrls: ['./produto-cadastro.component.scss']
 })
-export class ProdutoCadastroComponent implements OnInit {
+export class ProdutoCadastroComponent implements OnInit, AfterViewInit, OnDestroy {
   isEditing!: boolean;
   title = 'Inclusão Produto';
   categorias!: ICategoria[];
@@ -33,6 +35,8 @@ export class ProdutoCadastroComponent implements OnInit {
     { id: 3, descricao: 'Premium'},
   ]
 
+  private mediaSub!: Subscription;
+
   constructor(
     private categoriasService: CategoriasService,
     private matSnackBar: MatSnackBar,
@@ -40,7 +44,8 @@ export class ProdutoCadastroComponent implements OnInit {
     private fb: FormBuilder,
     private produtosService: ProdutosService,
     @Inject(MAT_DIALOG_DATA) public editData : any,
-    private matDialogRef: MatDialogRef<ProdutoCadastroComponent>
+    private matDialogRef: MatDialogRef<ProdutoCadastroComponent>,
+    private mediaObserver: MediaObserver
     ) { }
 
   ngOnInit(): void {
@@ -61,6 +66,19 @@ export class ProdutoCadastroComponent implements OnInit {
       this.frmCadastro.controls['preco'].setValue(this.editData.preco);
       this.frmCadastro.controls['descricao'].setValue(this.editData.descricao);
     }
+
+    this.mediaSub = this.mediaObserver.media$.subscribe(
+      // const matDialogConfig = new MatDialogConfig();
+      (change: MediaChange) => {
+        console.log(change.mqAlias);
+        console.log(change);
+
+        if (change.mqAlias === 'sm') {
+          const valor = this.matDialogRef.getState();
+          console.log('valor', valor);
+        }
+      }
+    );
   }
 
   initForm() {
@@ -179,6 +197,16 @@ export class ProdutoCadastroComponent implements OnInit {
           this.matSnackBar.open(`Erro: ${err.status} - ${err.statusText} `, '',{duration: 3000, panelClass:'danger-snackbar'});
         },
         )
+    }
+  }
+
+  ngAfterViewInit(): void {
+
+  }
+
+  ngOnDestroy(): void {
+    if (this.mediaSub) {
+      this.mediaSub.unsubscribe();
     }
   }
 

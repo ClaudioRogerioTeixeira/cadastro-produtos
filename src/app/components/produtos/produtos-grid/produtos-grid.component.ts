@@ -41,7 +41,7 @@ export class ProdutosGridComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '60%';
+    dialogConfig.width = '100%';
     dialogConfig.height = 'auto';
     dialogConfig.hasBackdrop = true;
     dialogConfig.direction= 'ltr';
@@ -88,7 +88,7 @@ export class ProdutosGridComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '60%';
+    dialogConfig.width = '100%';
     dialogConfig.height = 'auto';
     dialogConfig.hasBackdrop = true;
     dialogConfig.direction= 'ltr';
