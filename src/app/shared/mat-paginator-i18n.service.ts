@@ -2,7 +2,7 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 import { TranslateService } from '@ngx-translate/core';
 import { Injectable } from '@angular/core';
 
-const ITEMS_PER_PAGE = 'Itens por página:'; // 'Items per page:';
+const ITEMS_PER_PAGE = 'Itens por pág.:'; // 'Items per page:';
 const NEXT_PAGE = 'Próxima página'; // 'Next page';
 const PREV_PAGE = 'Página anterior'; // 'Previous page';
 const FIRST_PAGE = 'Primeira página'; // 'First page';
@@ -32,7 +32,7 @@ public getRangeLabel = (page: number, pageSize: number, length: number): string 
     ? Math.min(startIndex + pageSize, length)
     : startIndex + pageSize;
 
-  return `${startIndex + 1} - ${endIndex} / Total registros: ${length}`;
+  return `${startIndex + 1} - ${endIndex}/${length}`;
 };
 
 public getAndInitTranslations(): void {
