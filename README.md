@@ -9,7 +9,7 @@ Cadastro de Produtos (Angular 12, API NODE/Json-Server)
 ## Backend:
 Local:
 - Repositório: https://github.com/ClaudioRogerioTeixeira/produtos-api
-- node server.js
+- node server
 
 Remoto: (Heroku)
 - Repositório: https://github.com/ClaudioRogerioTeixeira/produtos-api
